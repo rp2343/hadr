@@ -1,5 +1,4 @@
-FROM java:8
-#WORKDIR /
-ADD HelloWorld.jar HelloWorld.jar
-EXPOSE 8080
-CMD ["java", "-jar", "HelloWorld.jar"]
+FROM alpine:latest
+ADD HelloWorld.class HelloWorld.class
+RUN apk --update add openjdk8-jre
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "HelloWorld"]
